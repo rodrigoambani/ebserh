@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta EBSERH</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Consulta Resultado EBSERH</h1>
+  <form method="POST">
+    <input type="text" name="busca" placeholder="Digite nome ou inscrição" required>
+    <button type="submit">Buscar</button>
+  </form>
+
+  {% if resultados %}
+    <table>
+      <tr>
+        <th>Inscrição</th>
+        <th>Nome</th>
+        <th>Nota Objetiva</th>
+        <th>Nota Redação</th>
+        <th>Nascimento</th>
+        <th>Situação</th>
+        <th>Classificação</th>
+        <th>Nota Final</th>
+      </tr>
+      {% for r in resultados %}
+      <tr>
+        <td>{{ r.inscricao }}</td>
+        <td>{{ r.nome }}</td>
+        <td>{{ r.nota_objetiva }}</td>
+        <td>{{ r.nota_redacao }}</td>
+        <td>{{ r.nascimento }}</td>
+        <td>{{ r.situacao }}</td>
+        <td>{{ r.classificacao }}</td>
+        <td>{{ r.nota_final }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+</body>
+</html>
